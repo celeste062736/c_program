@@ -1,36 +1,32 @@
 #include <stdio.h>
 
-enum Date {
-    YEAR = 0,
-    MONTH,
-    DAY,
-};
-
-void inputDate(int date[]);
-void printBirthday(int date[] int old);
+void inputDate(int* year, int* month, int* day);
+void printBirthday(int year, int month, int day, int old);
 
 int main(void) {
-    int data[3];
+    int year;
+    int month;
+    int day;
 
-    inputDate(date);
-    printBirthday(date, 60);
+    inputDate(&year, &month, &day);
+    printBirthday(year, month, day, 60);
     return 0;
 }
 
-void inputDate(int date[]) {
+void inputDate(int* year, int* month, int* day) {
     printf("Enter your birthday.\n");
     
     printf("year: ");
-    scanf("%d", &date[YEAR]);
+    scanf("%d", year);
 
     printf("month: ");
-    scanf("%d", &date[MONTH]);
+    scanf("%d", month);
 
     printf("day: ");
-    scanf("%d", &date[DAY]);
+    scanf("%d", day);
 }
 
-void printBirthday(int date[], int age) {
+void printBirthday(int year, int month, int day, int age) {
     printf("Birthday in %d age. (yyyy-mm-dd)\n", age);
-    printf("%4d-%02d-%02d\n", date[YEAR] + age, date[MONTH], date[DAY]);
+    printf("%4d-%02d-%02d\n", year + age, month, day);
 }

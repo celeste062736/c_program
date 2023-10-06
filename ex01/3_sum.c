@@ -17,7 +17,7 @@ int sumRangeWithIndex(int* array, int start, int end) {
 
     sum = 0;
     for(i = start; i <= end; i++) {
-        sum += array[i];
+        sum += *(array + i);
     }
     return sum;
 }
