@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define MAX_NUM (10)
+
 typedef struct person {
     char name[30];
     char phoneNum[12];
@@ -21,7 +23,7 @@ void editPerson(personT arr_p[]);
 void deletePerson(personT arr_p[]);
 
 int main(void) {
-    personT arr_p[10];
+    personT arr_p[MAX_NUM];
     int menuNum;
 
     initArr(arr_p);
@@ -97,7 +99,7 @@ void printPerson(personT p) {
 void printPersonList(personT arr_p[]) {
     int i;
 
-    for(i = 0; i < 10; i++) {
+    for(i = 0; i < MAX_NUM; i++) {
         if (arr_p[i].name[0] == '\0') {
             continue;
         }
@@ -113,14 +115,14 @@ void searchByName(personT arr_p[]) {
 
     printf("Enter name you want to find: ");
     scanf("%s", name);
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < MAX_NUM; i++) {
         if (strcmp(name, arr_p[i].name) == 0) {
             printf("Person%d info.\n", i + 1);
             printPerson(arr_p[i]);
             break;
         }
     }
-    if (i == 11) {
+    if (i > MAX_NUM) {
         printf("%s not found.\n", name);
     }
     printf("\n");
@@ -139,14 +141,14 @@ void inputPerson(personT* p) {
 void addNewPerson(personT arr_p[]) {
     int i;
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < MAX_NUM; i++) {
         if (arr_p[i].name[0] == '\0') {
             printf("Store in person%d.\n", i + 1);
             inputPerson(arr_p + i);
             break;
         }
     }
-    if (i == 11) {
+    if (i > MAX_NUM) {
         printf("No empty storage.\n");
     }
 }
@@ -156,7 +158,7 @@ void editPerson(personT arr_p[]) {
 
     printf("Enter number you want to edit: ");
     scanf("%d", &num);
-    if (num <= 0 || num > 10) {
+    if (num <= 0 || num > MAX_NUM) {
         printf("Wrong number. Enter 1 ~ 10.\n");
         return;
     }
@@ -173,7 +175,7 @@ void deletePerson(personT arr_p[]) {
 
     printf("Enter number you want to delete: ");
     scanf("%d", &num);
-    if (num <= 0 || num > 10) {
+    if (num <= 0 || num > MAX_NUM) {
         printf("Wrong number. Enter 1 ~ 10.\n");
         return;
     }
